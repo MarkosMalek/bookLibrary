@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function NavBar() {
@@ -9,11 +9,11 @@ function NavBar() {
         <Navbar.Brand as={Link} to="/">
           Home
         </Navbar.Brand>
-        <Navbar.Brand as={Link} to="/search">
-          search
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll" />
+        <Nav>
+          <Nav.Link as={Link} to="/search">
+            Search
+          </Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );

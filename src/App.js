@@ -7,6 +7,10 @@ import Home from "./components/Home";
 import Search from "./components/Search";
 
 export default class App extends Component {
+  state = {
+    loading: true,
+    books: [],
+  };
   getBooks = async () => {
     const books = await BooksAPI.getAll();
     this.setState({ loading: false, books });
@@ -15,13 +19,15 @@ export default class App extends Component {
     this.getBooks();
   }
   render() {
-    return (
+    return this.state.loading ? (
+      <div>Loading...</div>
+    ) : (
       <div>
         <Router>
           <NavBar />
           <Switch>
             <Route path="/" exact>
-              <Home />
+              <Home books={this.state.books} />
             </Route>
           </Switch>
           <Switch>
