@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <Navbar bg="light" expand="lg" sticky="top">
-      <Container>
+      <Container style={{ margin: 0 }}>
         <Navbar.Brand as={Link} to="/">
           Home
         </Navbar.Brand>

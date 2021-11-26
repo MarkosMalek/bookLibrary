@@ -24,17 +24,20 @@ export default class App extends Component {
     ) : (
       <div>
         <Router>
+          {console.log(this.state.books)}
           <NavBar />
-          <Switch>
-            <Route path="/" exact>
-              <Home books={this.state.books} />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route exact path="/search">
-              <Search />
-            </Route>
-          </Switch>
+          <div>
+            <Switch>
+              <Route path="/" exact>
+                <Home books={this.state.books} />
+              </Route>
+            </Switch>
+            <Switch>
+              <Route exact path="/search">
+                <Search books={this.state.books} />
+              </Route>
+            </Switch>
+          </div>
         </Router>
       </div>
     );
