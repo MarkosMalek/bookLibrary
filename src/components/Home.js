@@ -13,7 +13,11 @@ export default function Home(props) {
               if (book.shelf === "currentlyReading") {
                 return (
                   <Col key={book.id}>
-                    <BookCard key={book.id} book={book} />
+                    <BookCard
+                      key={book.id}
+                      book={book}
+                      updateShelf={props.updateHandler}
+                    />
                   </Col>
                 );
               }
@@ -28,7 +32,11 @@ export default function Home(props) {
               if (book.shelf === "wantToRead") {
                 return (
                   <Col key={book.id}>
-                    <BookCard key={book.id} book={book} />
+                    <BookCard
+                      key={book.id}
+                      book={book}
+                      updateShelf={props.updateHandler}
+                    />
                   </Col>
                 );
               }
@@ -42,7 +50,11 @@ export default function Home(props) {
               if (book.shelf === "read") {
                 return (
                   <Col key={book.id}>
-                    <BookCard key={book.id} book={book} />
+                    <BookCard
+                      key={book.id}
+                      book={book}
+                      updateShelf={props.updateHandler}
+                    />
                   </Col>
                 );
               }

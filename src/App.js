@@ -11,10 +11,20 @@ export default class App extends Component {
     loading: true,
     books: [],
   };
+
+  //get all books
   getBooks = async () => {
     const books = await BooksAPI.getAll();
-    this.setState({ loading: false, books });
+    this.setState({ books, loading: false });
   };
+
+  //update books category
+  updateHandler = async (book, shelf) => {
+    this.setState({ loading: true });
+    await BooksAPI.update(book, shelf);
+    this.getBooks();
+  };
+
   componentDidMount() {
     this.getBooks();
   }
@@ -24,17 +34,22 @@ export default class App extends Component {
     ) : (
       <div>
         <Router>
-          {console.log(this.state.books)}
           <NavBar />
           <div>
             <Switch>
               <Route path="/" exact>
-                <Home books={this.state.books} />
+                <Home
+                  books={this.state.books}
+                  updateHandler={this.updateHandler}
+                />
               </Route>
             </Switch>
             <Switch>
               <Route exact path="/search">
-                <Search books={this.state.books} />
+                <Search
+                  books={this.state.books}
+                  updateHandler={this.updateHandler}
+                />
               </Route>
             </Switch>
           </div>
