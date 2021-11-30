@@ -17,6 +17,7 @@ export default function Home(props) {
                     <BookCard
                       key={book.id}
                       book={book}
+                      shelf={book.shelf}
                       updateShelf={updateHandler}
                     />
                   </Col>
@@ -37,6 +38,7 @@ export default function Home(props) {
                       key={book.id}
                       book={book}
                       updateShelf={updateHandler}
+                      shelf={book.shelf}
                     />
                   </Col>
                 );
@@ -55,6 +57,7 @@ export default function Home(props) {
                       key={book.id}
                       book={book}
                       updateShelf={updateHandler}
+                      shelf={book.shelf}
                     />
                   </Col>
                 );

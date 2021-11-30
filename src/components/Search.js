@@ -28,6 +28,8 @@ export default class Search extends Component {
     await this.setState({ searchInput: e.target.value });
     this.search(this.state.searchInput);
   };
+  shelf = null;
+  setShelf = (book) => {};
   render() {
     return (
       <div className="container">
@@ -45,10 +47,16 @@ export default class Search extends Component {
               {this.state.searchBooks ? (
                 this.state.searchBooks.map((book) => (
                   <Col xs={6} sm={4} md={3} key={book.id}>
+                    {this.props.books.map((mainbook) => {
+                      if (mainbook.id === book.id) {
+                        this.shelf = mainbook.shelf;
+                      }
+                    })}
                     <BookCard
                       key={book.id}
                       book={book}
                       updateShelf={this.props.updateHandler}
+                      shelf={this.shelf}
                     />
                   </Col>
                 ))

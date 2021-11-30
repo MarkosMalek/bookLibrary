@@ -4,7 +4,14 @@ import { Card, Dropdown, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function BookCard(props) {
-  const { book, updateShelf } = props;
+  const { book, updateShelf, shelf } = props;
+  const setActive = (bookShelf, cShelf) => {
+    if (bookShelf === cShelf) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return book ? (
     <div className="book">
       <Card style={{ width: "18rem", backgroundColor: "#f8f9fa" }}>
@@ -39,25 +46,36 @@ export default function BookCard(props) {
               <Dropdown.Item
                 as={Button}
                 value="currentlyReading"
-                onClick={(e) => updateShelf(props.book, e.target.value)}
+                onClick={(e) => updateShelf(book, e.target.value)}
+                active={setActive(shelf, "currentlyReading")}
               >
                 Currently Reading
               </Dropdown.Item>
               <Dropdown.Item
                 as={Button}
                 value="wantToRead"
-                onClick={(e) => updateShelf(props.book, e.target.value)}
+                onClick={(e) => updateShelf(book, e.target.value)}
+                active={setActive(shelf, "wantToRead")}
               >
                 Want to Read
               </Dropdown.Item>
               <Dropdown.Item
                 as={Button}
                 value="read"
-                onClick={(e) => updateShelf(props.book, e.target.value)}
+                onClick={(e) => updateShelf(book, e.target.value)}
+                active={setActive(shelf, "read")}
               >
                 Read
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to={`/books/${props.book.id}`}>
+              <Dropdown.Item
+                as={Button}
+                value="None"
+                onClick={(e) => updateShelf(book, e.target.value)}
+                active={setActive(shelf, null)}
+              >
+                None
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to={`/books/${book.id}`}>
                 More Detailes...
               </Dropdown.Item>
             </Dropdown.Menu>
