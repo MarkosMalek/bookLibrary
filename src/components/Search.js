@@ -47,6 +47,7 @@ export default class Search extends Component {
               {this.state.searchBooks ? (
                 this.state.searchBooks.map((book) => (
                   <Col xs={6} sm={4} md={3} key={book.id}>
+                    {(this.shelf = null)}
                     {this.props.books.map((mainbook) => {
                       if (mainbook.id === book.id) {
                         this.shelf = mainbook.shelf;
