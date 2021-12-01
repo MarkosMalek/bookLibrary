@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { Card, Dropdown, Nav, Button } from "react-bootstrap";
+import { Card, Dropdown, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function BookCard(props) {

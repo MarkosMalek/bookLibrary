@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as BooksAPI from "../BooksAPI";
 import { Row, Col, Container } from "react-bootstrap";
 import BookCard from "./BookCard";
+import { debounce } from "lodash";
 
 export default class Search extends Component {
   state = {
@@ -23,11 +24,13 @@ export default class Search extends Component {
       }
     }
   };
-  onChange = async (e) => {
+  //add debounce to the search to prevent firing a requist every single time the change event in the search triggered
+  onChange = debounce((e) => {
     e.preventDefault();
-    await this.setState({ searchInput: e.target.value });
+    this.setState({ searchInput: e.target.value });
+
     this.search(this.state.searchInput);
-  };
+  }, 1000);
   shelf = null;
   setShelf = (book) => {};
   render() {
