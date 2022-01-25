@@ -14,9 +14,15 @@ export default function BookCard(props) {
   };
   return book ? (
     <div className="book">
-      <Card style={{ width: "18rem", backgroundColor: "#f8f9fa" }}>
+      <Card
+        style={{
+          width: "18rem",
+          backgroundColor: "#f8f9fa",
+          marginTop: "10px",
+        }}
+      >
         <Card.Img
-          style={{ maxHeight: "300px" }}
+          style={{ maxHeight: "230px" }}
           className="container"
           variant="top"
           src={
@@ -27,12 +33,17 @@ export default function BookCard(props) {
         />
         <Card.Body>
           <Card.Title className="list-books-title">{book.title}</Card.Title>
-          <Card.Text> {book.subtitle}</Card.Text>
           <Card.Text>
+            {book.subtitle && `${book.subtitle.substring(0, 30)}...`}
+          </Card.Text>
+          <Card.Text style={{ fontSize: 14 }}>
             By{" "}
             {book.authors ? (
               <strong>
-                {book.authors.map((auther) => auther).join(" | ")}
+                {book.authors
+                  .slice(0, 2)
+                  .map((auther) => auther)
+                  .join(" | ")}
               </strong>
             ) : (
               <div>Not Mentioned</div>
